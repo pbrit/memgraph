@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eux
+
 SUPPORTED_OS=(
     all
     amzn-2
@@ -61,8 +63,9 @@ fi
 # Function to check and install dependencies for a given distribution script
 run_script() {
     local distro_script=$1
+    local parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
     echo "Running script for $@"
-    ./environment/os/"$@"
+    "${parent_path}/${@}"
 }
 
 # New function for 'prepare' command to download and extract the toolchain

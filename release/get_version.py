@@ -258,7 +258,7 @@ for version in versions:
 if current_version is None:
     raise Exception("You are attempting to determine the version for a very " "old version of Memgraph!")
 version, branch, master_branch_merge = current_version
-distance = int(get_output("git", "rev-list", "--count", "--first-parent", master_branch_merge + ".." + current_hash))
+distance = int(get_output("git", "rev-list", "--count", "--first-parent", master_branch_merge + ".." + current_hash)) # type: ignore
 version_str = ".".join(map(str, version)) + ".0"
 if distance == 0:
     print(format_version(args.variant, version_str, offering, suffix=args.suffix), end="")

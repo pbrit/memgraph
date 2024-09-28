@@ -6,6 +6,8 @@ cmake_policy(SET CMP0076 NEW)
 # !! IMPORTANT !! run ./project_root/init.sh before cmake command
 # to download dependencies
 
+set(CMAKE_VERBOSE_MAKEFILE on)
+
 if(NOT UNIX)
   message(FATAL_ERROR "Unsupported operating system.")
 endif()
@@ -56,16 +58,16 @@ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/licenses/
 # Option that is used to specify which version of Memgraph should be built. The
 # default is `ON` which causes the build system to build Memgraph Enterprise.
 # Memgraph Community is built if explicitly set to `OFF`.
-option(MG_ENTERPRISE "Build Memgraph Enterprise Edition" ON)
+option(MG_ENTERPRISE "Build Memgraph Enterprise Edition" OFF)
 
 # Set the current version here to override the automatic version detection. The
 # version must be specified as `X.Y.Z`. Primarily used when building new patch
 # versions.
-set(MEMGRAPH_OVERRIDE_VERSION "")
+set(MEMGRAPH_OVERRIDE_VERSION "0.0.1")
 
 # Custom suffix that this version should have. The suffix can be any arbitrary
 # string. Primarily used when building a version for a specific customer.
-set(MEMGRAPH_OVERRIDE_VERSION_SUFFIX "")
+set(MEMGRAPH_OVERRIDE_VERSION_SUFFIX "pbrit")
 
 # Variables used to generate the versions.
 if (MG_ENTERPRISE)
@@ -79,6 +81,7 @@ set(get_version_script "${CMAKE_CURRENT_SOURCE_DIR}/release/get_version.py")
 execute_process(
     OUTPUT_VARIABLE MEMGRAPH_VERSION
     RESULT_VARIABLE MEMGRAPH_VERSION_RESULT
+    COMMAND_ECHO STDOUT
     COMMAND "${get_version_script}" ${get_version_offering}
                 "${MEMGRAPH_OVERRIDE_VERSION}"
                 "${MEMGRAPH_OVERRIDE_VERSION_SUFFIX}"
