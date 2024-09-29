@@ -121,7 +121,7 @@ function install_dotnet_sdk ()
     chmod +x ./dotnet-install.sh
     ./dotnet-install.sh --channel 8.0 --install-dir $DOTNETSDKINSTALLDIR
     rm dotnet-install.sh
-    ln -s $DOTNETSDKINSTALLDIR/dotnet /usr/bin/dotnet
+    ln -fs $DOTNETSDKINSTALLDIR/dotnet /usr/bin/dotnet
   fi
   echo "dotnet sdk $DOTNETSDKVERSION installed under $DOTNETSDKINSTALLDIR"
 }

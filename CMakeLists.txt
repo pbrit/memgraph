@@ -63,7 +63,7 @@ option(MG_ENTERPRISE "Build Memgraph Enterprise Edition" OFF)
 # Set the current version here to override the automatic version detection. The
 # version must be specified as `X.Y.Z`. Primarily used when building new patch
 # versions.
-set(MEMGRAPH_OVERRIDE_VERSION "0.0.1")
+set(MEMGRAPH_OVERRIDE_VERSION "2.20.0")
 
 # Custom suffix that this version should have. The suffix can be any arbitrary
 # string. Primarily used when building a version for a specific customer.

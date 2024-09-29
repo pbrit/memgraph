@@ -28,6 +28,7 @@ ve3/
 perf.data*
 TAGS
 *.apollo_measurements
+.cache
 
 # Lisp compiled object code
 *.fas

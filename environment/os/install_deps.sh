@@ -63,9 +63,9 @@ fi
 # Function to check and install dependencies for a given distribution script
 run_script() {
     local distro_script=$1
-    local parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+    # local parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
     echo "Running script for $@"
-    "${parent_path}/${@}"
+    /workspaces/workbench/oss/memgraph/environment/os/$@
 }
 
 # New function for 'prepare' command to download and extract the toolchain
